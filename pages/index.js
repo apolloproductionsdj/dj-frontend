@@ -1,6 +1,6 @@
-import Layout from "../components/Layout";
+import Layout from "@/components/Layout";
 
-export default function EventsPage() {
+export default function HomePage() {
   return (
     <Layout>
       <h1>Home</h1>
