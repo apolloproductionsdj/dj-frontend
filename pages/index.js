@@ -4,7 +4,8 @@ import { API_URL } from "@/config/index";
 import Link from "next/link";
 
 export default function HomePage({ events }) {
-  console.log(events);
+  // console.log(events);
+  // console.log(events);
   return (
     <Layout>
       <h1>Upcoming Events</h1>
@@ -24,11 +25,16 @@ export default function HomePage({ events }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/api/events`);
-  const events = await res.json();
+  const res = await fetch(`${API_URL}/api/events?populate=*`);
+  // console.log(res);
+  const events1 = await res.json();
+
+  const events = events1.data;
+
+  console.log(events[0].attributes.image.data.attributes.formats.thumbnail.url);
 
   return {
-    props: { events: events.slice(0, 3) },
+    props: { events },
     revalidate: 1,
   };
 }

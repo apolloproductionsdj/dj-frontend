@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@strapi/provider-upload-cloudinary": "^4.2.2",
     "i": "^0.3.7",
     "next": "12.2.0",
     "react": "18.2.0",
