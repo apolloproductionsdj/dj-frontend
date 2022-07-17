@@ -29,10 +29,11 @@ export async function getStaticProps() {
   // console.log(res);
   const events1 = await res.json();
 
-  const events = events1.data;
+  const events = await events1.data;
 
-  console.log(events[0].attributes.image.data.attributes.formats.thumbnail.url);
-
+  // console.log(events[0].attributes.image.data.attributes.formats.thumbnail.url);
+  // console.log(events[0].attributes.slug);
+  // console.log(events);
   return {
     props: { events },
     revalidate: 1,

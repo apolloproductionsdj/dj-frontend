@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 
 export default function EventsPage({ events }) {
+  // console.log(events.attributes.image);
   return (
     <Layout>
       <h1>Events</h1>
@@ -16,8 +17,11 @@ export default function EventsPage({ events }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}/api/events`);
-  const events = await res.json();
+  const res = await fetch(`${API_URL}/api/events?populate=*`);
+  const events1 = await res.json();
+
+  const events = events1.data;
+  // console.log(events[1].attributes.image.data.attributes.formats.medium.url);
 
   return {
     props: { events },

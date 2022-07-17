@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "@/styles/EventItem.module.css";
 
 export default function EventItem({ evt }) {
+  // console.log(evt.attributes.slug);
+  console.log(evt);
   return (
     <div className={styles.event}>
       <div className={styles.img}>
@@ -12,9 +14,6 @@ export default function EventItem({ evt }) {
               ? evt.attributes.image.data.attributes.formats.thumbnail.url
               : "/images/event-default.png"
           }
-          // src={
-          //   "https://res.cloudinary.com/devopsdj/image/upload/v1657639213/thumbnail_event1_2b823725bd.jpg"
-          // }
           width={170}
           height={100}
         />
@@ -22,13 +21,14 @@ export default function EventItem({ evt }) {
 
       <div className={styles.info}>
         <span>
-          {evt.attributes.date} at {evt.attributes.time}
+          {new Date(evt.attributes.date).toLocaleDateString("en-US")} at{" "}
+          {evt.attributes.time}
         </span>
         <h3>{evt.attributes.name}</h3>
       </div>
 
       <div className={styles.link}>
-        <Link href={`/events/${evt.slug}`}>
+        <Link href={`/events/${evt.attributes.slug}`}>
           <a className="btn">Details</a>
         </Link>
       </div>
